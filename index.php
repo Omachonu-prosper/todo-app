@@ -21,7 +21,7 @@
 
 <?php require_once './templates/header.php' ?>
 
-   <div class="mr-auto ml-auto mt-5" style="max-width: 50rem">
+   <div class="mr-auto ml-auto mt-5 container">
      <div class="card">
       <div class="card-header">
         <form action="" method="post" class="row">
@@ -45,7 +45,7 @@
               <div class="card-body row align-items-center" data-id="<?php echo $task['id'] ?>">
                 <h5 class="card-title mb-0 col-10"><?php echo $task['title'] ?></h5>
 
-                <div class="col-2" style="display: flex; justify-content: space-between;">
+                <div class="col-2 card-buttons">
                   <a href="#" class="btn btn-danger">
                     <i class="fa fa-trash"></i>
                   </a>

@@ -1,18 +1,26 @@
 <?php 
+  // Connect to mysql database
+  $conn = mysqli_connect('localhost', 'root', '', 'todoapp',);
+  $tasks = [
+    ['id' => '1', 'title' => 'Wash the dishes'],
+    ['id' => '2', 'title' => 'Do laundry'],
+    ['id' => '3', 'title' => 'Make dinner']
+  ];
 
-$tasks = [
-  [
-    'id' => '1',
-    'title' => 'Wash the dishes'
-  ],
-  [
-    'id' => '2',
-    'title' => 'Do laundry'
-  ],[
-    'id' => '3',
-    'title' => 'Make dinner'
-  ]
-]
+  if(!$conn) {
+    echo 'An error occured. ERROR-' . mysqli_connect_error;  
+  }
+
+  // Form was submitted
+  if(isset($_POST['submit'])) {
+    // Add new task to tasks array 
+    $new_task = [
+      'id' => count($tasks),
+      'title' => $_POST['task-title']
+    ];
+
+    array_push($tasks, $new_task);
+  }
 
 ?>
 
@@ -21,13 +29,13 @@ $tasks = [
    <div class="mr-auto ml-auto mt-5" style="max-width: 50rem">
      <div class="card">
       <div class="card-header">
-        <form action="", method="post" style="display: flex; justify-content: space-between;">
+        <form action="" method="post" style="display: flex; justify-content: space-between;">
           <div class="form-group" style="display: inline-block; width: 77%">
             <label class="sr-only" for="inlineFormInput">Title</label>
-            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe" required>
+            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Task title" name="task-title" required>
           </div>
 
-            <button type="submit" class="btn btn-primary mb-2" style="width: 20%">Add Task</button>
+            <button type="submit" name="submit" class="btn btn-primary mb-2" style="width: 20%">Add Task</button>
         </form>
       </div>
 

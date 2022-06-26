@@ -1,33 +1,36 @@
-<<?php 
+<?php 
+  
+  $tasks = [
+    ['id' => '1', 'title' => 'Wash the dishes'],
+    ['id' => '2', 'title' => 'Do laundry'],
+    ['id' => '3', 'title' => 'Make dinner']
+  ];
 
-$tasks = [
-  [
-    'id' => '1',
-    'title' => 'Wash the dishes'
-  ],
-  [
-    'id' => '2',
-    'title' => 'Do laundry'
-  ],[
-    'id' => '3',
-    'title' => 'Make dinner'
-  ]
-]
+  // Form was submitted
+  if(isset($_POST['submit'])) {
+    // Add new task to tasks array 
+    $new_task = [
+      'id' => count($tasks),
+      'title' => $_POST['task-title']
+    ];
+
+    array_push($tasks, $new_task);
+  }
 
 ?>
 
 <?php require_once './templates/header.php' ?>
 
-   <div class="mr-auto ml-auto mt-5" style="max-width: 50rem">
+   <div class="mr-auto ml-auto mt-5 container">
      <div class="card">
       <div class="card-header">
-        <form action="", method="post" style="display: flex; justify-content: space-between;">
-          <div class="form-group" style="display: inline-block; width: 77%">
-            <label class="sr-only" for="inlineFormInput">Title</label>
-            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe" required>
+        <form action="" method="post" class="row">
+          <div class="form-group col-10 mb-0">
+            <label class="sr-only" for="inlineFormInput">Task Title</label>
+            <input type="text" class="form-control" id="inlineFormInput" placeholder="Task title" name="task-title" required>
           </div>
 
-            <button type="submit" class="btn btn-primary mb-2" style="width: 20%">Add Task</button>
+            <button type="submit" name="submit" class="btn btn-primary col-2">Add Task</button>
         </form>
       </div>
 
@@ -39,10 +42,18 @@ $tasks = [
         <?php } else { ?>
           <?php foreach($tasks as $task) { ?>
             <div class="card">
-              <div class="card-body" data-id="<?php echo $task['id'] ?>">
-                <h5 class="card-title"><?php echo $task['title'] ?></h5>
-                <a href="#" class="btn btn-danger">Delete</a>
-                <a href="#" class="btn btn-warning">Update</a>
+              <div class="card-body row align-items-center" data-id="<?php echo $task['id'] ?>">
+                <h5 class="card-title mb-0 col-10"><?php echo $task['title'] ?></h5>
+
+                <div class="col-2 card-buttons">
+                  <a href="#" class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </a>
+
+                  <a href="#" class="btn btn-warning">
+                    <i class="fa fa-pencil"></i>
+                  </a>
+                </div>
               </div>
             </div>
           <?php } ?>

@@ -12,6 +12,6 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
 
 
-    <title>Hello, world!</title>
+    <title>Todo list app by Omachonu Prosper</title>
   </head>
   <body>

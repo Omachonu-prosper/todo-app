@@ -1,15 +1,10 @@
 <?php 
-  // Connect to mysql database
-  $conn = mysqli_connect('localhost', 'root', '', 'todoapp',);
+  
   $tasks = [
     ['id' => '1', 'title' => 'Wash the dishes'],
     ['id' => '2', 'title' => 'Do laundry'],
     ['id' => '3', 'title' => 'Make dinner']
   ];
-
-  if(!$conn) {
-    echo 'An error occured. ERROR-' . mysqli_connect_error;  
-  }
 
   // Form was submitted
   if(isset($_POST['submit'])) {

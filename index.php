@@ -1,65 +1,90 @@
 <?php 
-  
-  $tasks = [
-    ['id' => '1', 'title' => 'Wash the dishes'],
-    ['id' => '2', 'title' => 'Do laundry'],
-    ['id' => '3', 'title' => 'Make dinner']
-  ];
 
-  // Form was submitted
-  if(isset($_POST['submit'])) {
-    // Add new task to tasks array 
-    $new_task = [
-      'id' => count($tasks),
-      'title' => $_POST['task-title']
+    // Mock up Data  
+    $tasks = [
+        [
+            'id' => '1',
+            'title' => 'Wash the dishes',
+            'status' => 'finished',
+            'create_date' => '27-06-2022',
+            'authors_id' => 1
+        ],
+        [
+            'id' => '2',
+            'title' => 'Run laps',
+            'status' => 'unfinished',
+            'create_date' => '27-06-2022',
+            'authors_id' => 1
+        ]
     ];
 
-    array_push($tasks, $new_task);
-  }
+    $user = [
+        'id' => '1',
+        'username' => 'John Doe',
+        'email' => 'JohnDoe@todoapp.com',
+        'password' => 'johndoe123',
+        'join_date' => '01-06-2022'
+    ];
 
 ?>
 
 <?php require_once './templates/header.php' ?>
+<?php require_once './templates/navbar.php' ?>
 
-   <div class="mr-auto ml-auto mt-5 container">
-     <div class="card">
-      <div class="card-header">
-        <form action="" method="post" class="row">
-          <div class="form-group col-10 mb-0">
-            <label class="sr-only" for="inlineFormInput">Task Title</label>
-            <input type="text" class="form-control" id="inlineFormInput" placeholder="Task title" name="task-title" required>
-          </div>
+    <main>
+        <div class="container mx-auto mt-5 pl-3 pr-3">
+            <div class="form-box card mb-5">
+                <div class="card-body">
+                    <form method="post" action="">
+                        <div class="form-row">
+                            <div class="form-group mb-md-0 col-md-auto task-input">
+                                <label class="sr-only">Task title</label>
+                                <input type="text" class="form-control" id="task-title" name="title" placeholder="Task title">
+                            </div>
 
-            <button type="submit" name="submit" class="btn btn-primary col-2">Add Task</button>
-        </form>
-      </div>
-
-      <div class="card-body">
-        <?php if(empty($tasks)) { ?>
-          <div class="card-text text-center">
-            Tasks you add will show up here
-          </div>
-        <?php } else { ?>
-          <?php foreach($tasks as $task) { ?>
-            <div class="card">
-              <div class="card-body row align-items-center" data-id="<?php echo $task['id'] ?>">
-                <h5 class="card-title mb-0 col-10"><?php echo $task['title'] ?></h5>
-
-                <div class="col-2 card-buttons">
-                  <a href="#" class="btn btn-danger">
-                    <i class="fa fa-trash"></i>
-                  </a>
-
-                  <a href="#" class="btn btn-warning">
-                    <i class="fa fa-pencil"></i>
-                  </a>
+                            <div class="col-md-auto submit-task">
+                                <button type="submit" name="submit" class="btn primary-background">Add Task</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </div>
             </div>
-          <?php } ?>
-        <?php } ?>
-      </div>
-    </div>
-   </div>
+
+            <div class="cards">
+                <!-- Display All tasks -->
+                <?php foreach($tasks as $task) { ?>
+                    <div class="card task mb-4" data-id="<?php echo $task['id'] ?>">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title"><?php echo $task['title'] ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    Created <?php echo $task['create_date'] ?>
+                                </h6>
+                            </div>
+                            
+                            <div class="row text-center pt-3">
+                                <div class="col">
+                                    <a href="#" class="card-link task-icon">
+                                        <i class="fa fa-trash trash"></i>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="card-link task-icon">
+                                        <i class="fa fa-pencil pencil"></i>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <a href="#" class="card-link task-icon">
+                                        <i class="fa fa-check-square-o check"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </main>
+
 
 <?php require_once './templates/footer.php' ?>

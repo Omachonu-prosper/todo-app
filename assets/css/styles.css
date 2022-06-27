@@ -5,3 +5,80 @@
 .navbar {
     background-color: var(--primary-color) !important;
 }
+
+.primary-background {
+    background-color: var(--primary-color);
+}
+
+a.primary-background,
+button.primary-background {
+    color: var(--white);
+}
+
+a.primary-background:hover, 
+a.primary-background:focus,
+button.primary-background:hover, 
+button.primary-background:focus {
+    color: var(--white);
+    background-color: rgba(82, 82, 165, .76);
+}
+
+.container {
+    max-width: 40rem;
+}
+
+.task,
+.form-box {
+    border: none;
+    box-shadow: 0 0 0.5rem 0rem rgba(0, 0, 0, .10);
+}
+
+.task-icon {
+    font-size: 1.3rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: inline-block;
+    position: relative;
+    transition: .5s all ease-in-out;
+}
+
+.task-icon:hover {
+    background-color: var(--light);
+    border-radius: 100%;
+}
+
+.task-icon i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--gray);
+    transition: all .5s ease-in-out;
+}
+
+.task-input {
+    width: 80%;
+}
+
+.submit-task {
+    width: 20%;
+}
+
+@media screen and (max-width: 576px) {
+    .task-input,
+    .submit-task {
+        width: 100%;
+    }
+}
+
+.task-icon:hover .trash {
+    color: var(--danger);
+}
+
+.task-icon:hover .pencil {
+    color: var(--warning);
+}
+
+.task-icon:hover .check {
+    color: var(--success);
+}

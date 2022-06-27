@@ -64,6 +64,10 @@ button.primary-background:focus {
     width: 20%;
 }
 
+.submit-task button {
+    width: 100%;
+}
+
 @media screen and (max-width: 576px) {
     .task-input,
     .submit-task {

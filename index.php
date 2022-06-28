@@ -1,22 +1,23 @@
 <?php 
-
+    require_once './scripts/model.php';
     // Mock up Data  
-    $tasks = [
-        [
-            'id' => '1',
-            'title' => 'Wash the dishes',
-            'status' => 'finished',
-            'create_date' => '27-06-2022',
-            'authors_id' => 1
-        ],
-        [
-            'id' => '2',
-            'title' => 'Run laps',
-            'status' => 'unfinished',
-            'create_date' => '27-06-2022',
-            'authors_id' => 1
-        ]
-    ];
+    // $tasks = [
+    //     [
+    //         'id' => '1',
+    //         'title' => 'Wash the dishes',
+    //         'status' => 'finished',
+    //         'create_date' => '27-06-2022',
+    //         'authors_id' => 1
+    //     ],
+    //     [
+    //         'id' => '2',
+    //         'title' => 'Run laps',
+    //         'status' => 'unfinished',
+    //         'create_date' => '27-06-2022',
+    //         'authors_id' => 1
+    //     ]
+    // ];
+    $tasks = fetchTasks();
 
     $user = [
         'id' => '1',
@@ -35,11 +36,14 @@
         <div class="container mx-auto mt-5 pl-3 pr-3">
             <div class="form-box card mb-5">
                 <div class="card-body">
-                    <form method="post" action="">
+                    <form method="post" action="./scripts/new_task.php" class="needs-validation" novalidate>
                         <div class="form-row">
                             <div class="form-group mb-md-0 col-md-auto task-input">
-                                <label class="sr-only">Task title</label>
-                                <input type="text" class="form-control" id="task-title" name="title" placeholder="Task title">
+                                <label class="sr-only" for="task-title">Task title</label>
+                                <input type="text" class="form-control" id="task-title" name="title" placeholder="Task title" required>
+                                <div class="invalid-feedback">
+                                    Input can not be empty.
+                                </div>
                             </div>
 
                             <div class="col-md-auto submit-task">
@@ -56,7 +60,7 @@
                     <div class="card task mb-4" data-id="<?php echo $task['id'] ?>">
                         <div class="card-body">
                             <div>
-                                <h5 class="card-title"><?php echo $task['title'] ?></h5>
+                                <h5 class="card-title"><?php echo $task['task_title'] ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted">
                                     Created <?php echo $task['create_date'] ?>
                                 </h6>

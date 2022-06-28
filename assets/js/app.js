@@ -1,3 +1,4 @@
+// Handle validation for all forms on the page
 (function() {
     'use strict';
     window.addEventListener('load', function() {

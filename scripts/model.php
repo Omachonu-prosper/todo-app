@@ -1,21 +1,17 @@
 <?php 
 
-	$credentials = [
-		'host' => 'localhost',
-		'username' => 'omapros',
-		'password' => 'password',
-		'database' => 'todoapp'
-	];
-
 	function fetchTasks() {
-		global $credentials;
-
+		$conn = mysqli_init();
+		if($_ENV['ENVIRONMENT'] == 'production') {
+			// Set SSL Certificate for planet scale 
+			mysqli_ssl_set($conn, NULL, NULL, $_ENV["MYSQL_ATTR_SSL_CA"], NULL, NULL);
+		}
 		// Create connection to database 
-		$conn = mysqli_connect($credentials['host'],$credentials['username'], $credentials['password'], $credentials['database']);
+		mysqli_real_connect($conn, $_ENV["HOST"], $_ENV["USERNAME"], $_ENV["PASSWORD"], $_ENV["DATABASE"]);
 
 		// Catch connection errors
-		if(!$conn) {
-			echo mysqli_connect_error();
+		if(mysqli_connect_error()) {
+			echo 'Not connected to database';
 			return;
 		}
 

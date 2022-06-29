@@ -1,0 +1,6 @@
+setEnv HOST ''
+setEnv USERNAME ''
+setEnv PASSWORD ''
+setEnv DATABASE ''
+setEnv MYSQL_ATTR_SSL_CA ''
+setEnv ENVIRONMENT ''

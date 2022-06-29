@@ -1,8 +1,10 @@
 <?php 
     // require Dotenv
     require 'vendor/autoload.php';
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv->load();
+    if(getenv('ENVIRONMENT') == 'development') {
+        $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
+    }
 
     require_once './scripts/model.php';
    

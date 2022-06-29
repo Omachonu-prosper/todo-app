@@ -2,12 +2,16 @@
 
 	function fetchTasks() {
 		$conn = mysqli_init();
-		if($_ENV['ENVIRONMENT'] == 'production') {
+		// For heroku deployment 
+		if(getenv('ENVIRONMENT') == 'production') {
 			// Set SSL Certificate for planet scale 
 			mysqli_ssl_set($conn, NULL, NULL, $_ENV["MYSQL_ATTR_SSL_CA"], NULL, NULL);
+			// Create connection to database 
+			mysqli_real_connect($conn, getenv("HOST"), getenv("USERNAME"), getenv("PASSWORD"), getenv("DATABASE"));
+		} else {
+			// Create connection to database 
+			mysqli_real_connect($conn, $_ENV["HOST"], $_ENV["USERNAME"], $_ENV["PASSWORD"], $_ENV["DATABASE"]);
 		}
-		// Create connection to database 
-		mysqli_real_connect($conn, $_ENV["HOST"], $_ENV["USERNAME"], $_ENV["PASSWORD"], $_ENV["DATABASE"]);
 
 		// Catch connection errors
 		if(mysqli_connect_error()) {

@@ -1,8 +1,4 @@
 <?php 
-    // require Dotenv
-    require 'vendor/autoload.php';
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv->load();
 
     require_once './scripts/model.php';
    
@@ -15,6 +11,8 @@
         'password' => 'johndoe123',
         'join_date' => '01-06-2022'
     ];
+
+    echo getenv('ENVIRONMENT');
 
 ?>
 

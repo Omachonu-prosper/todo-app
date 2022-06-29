@@ -12,8 +12,6 @@
         'join_date' => '01-06-2022'
     ];
 
-    echo getenv('ENVIRONMENT');
-
 ?>
 
 <?php require_once './templates/header.php' ?>

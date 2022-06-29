@@ -1,22 +1,11 @@
 <?php 
+    // require Dotenv
+    require 'vendor/autoload.php';
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+
     require_once './scripts/model.php';
-    // Mock up Data  
-    // $tasks = [
-    //     [
-    //         'id' => '1',
-    //         'title' => 'Wash the dishes',
-    //         'status' => 'finished',
-    //         'create_date' => '27-06-2022',
-    //         'authors_id' => 1
-    //     ],
-    //     [
-    //         'id' => '2',
-    //         'title' => 'Run laps',
-    //         'status' => 'unfinished',
-    //         'create_date' => '27-06-2022',
-    //         'authors_id' => 1
-    //     ]
-    // ];
+   
     $tasks = fetchTasks();
 
     $user = [

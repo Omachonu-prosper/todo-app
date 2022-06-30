@@ -10,7 +10,7 @@
         'email' => 'JohnDoe@todoapp.com',
         'password' => 'johndoe123',
         'join_date' => '01-06-2022'
-    ];
+    ]; 
 
 ?>
 
@@ -40,6 +40,14 @@
             </div>
 
             <div class="cards">
+                <!-- Display this if no tasks in database -->
+                <?php if(empty($tasks)) { ?>
+                    <div class="no-task">
+                        <!-- Image gotten from storyset.com  -->
+                        <img src="./assets/images/add-tasks.png" alt="No tasks to show yet. Add a new task." title="No tasks to show yet. Add a new task.">
+                    </div>
+                <?php } ?>
+
                 <!-- Display All tasks -->
                 <?php foreach($tasks as $task) { ?>
                     <div class="card task mb-4" data-id="<?php echo $task['id'] ?>">

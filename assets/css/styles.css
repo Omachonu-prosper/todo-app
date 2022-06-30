@@ -86,3 +86,11 @@ button.primary-background:focus {
 .task-icon:hover .check {
     color: var(--success);
 }
+
+.no-task {
+    text-align: center;
+}
+
+.no-task img {
+    width:  20rem;
+}

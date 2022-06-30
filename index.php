@@ -10,7 +10,7 @@
         'email' => 'JohnDoe@todoapp.com',
         'password' => 'johndoe123',
         'join_date' => '01-06-2022'
-    ];
+    ]; 
 
 ?>
 
@@ -25,7 +25,7 @@
                         <div class="form-row">
                             <div class="form-group mb-md-0 col-md-auto task-input">
                                 <label class="sr-only" for="task-title">Task title</label>
-                                <input type="text" class="form-control" id="task-title" name="title" placeholder="Task title" required>
+                                <input type="text" class="form-control" id="task-title" name="task_title" placeholder="Task title" required>
                                 <div class="invalid-feedback">
                                     Input can not be empty.
                                 </div>
@@ -40,14 +40,23 @@
             </div>
 
             <div class="cards">
+                <!-- Display this if no tasks in database -->
+                <?php if(empty($tasks)) { ?>
+                    <div class="no-task">
+                        <!-- Image gotten from storyset.com  -->
+                        <img src="./assets/images/add-tasks.png" alt="No tasks to show yet. Add a new task." title="No tasks to show yet. Add a new task.">
+                        <p>No tasks to show yet.</p>
+                    </div>
+                <?php } ?>
+
                 <!-- Display All tasks -->
                 <?php foreach($tasks as $task) { ?>
-                    <div class="card task mb-4" data-id="<?php echo $task['id'] ?>">
+                    <div class="card task mb-4" data-id="<?php echo htmlSpecialChars($task['id']);?>">
                         <div class="card-body">
                             <div>
-                                <h5 class="card-title"><?php echo $task['task_title'] ?></h5>
+                                <h5 class="card-title"><?php echo htmlSpecialChars($task['task_title']); ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted">
-                                    Created <?php echo $task['create_date'] ?>
+                                    Created <?php echo htmlSpecialChars($task['create_date']); ?>
                                 </h6>
                             </div>
                             

@@ -25,7 +25,7 @@
                         <div class="form-row">
                             <div class="form-group mb-md-0 col-md-auto task-input">
                                 <label class="sr-only" for="task-title">Task title</label>
-                                <input type="text" class="form-control" id="task-title" name="title" placeholder="Task title" required>
+                                <input type="text" class="form-control" id="task-title" name="task_title" placeholder="Task title" required>
                                 <div class="invalid-feedback">
                                     Input can not be empty.
                                 </div>

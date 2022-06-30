@@ -51,12 +51,12 @@
 
                 <!-- Display All tasks -->
                 <?php foreach($tasks as $task) { ?>
-                    <div class="card task mb-4" data-id="<?php echo $task['id'] ?>">
+                    <div class="card task mb-4" data-id="<?php echo htmlSpecialChars($task['id']);?>">
                         <div class="card-body">
                             <div>
-                                <h5 class="card-title"><?php echo $task['task_title'] ?></h5>
+                                <h5 class="card-title"><?php echo htmlSpecialChars($task['task_title']); ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted">
-                                    Created <?php echo $task['create_date'] ?>
+                                    Created <?php echo htmlSpecialChars($task['create_date']); ?>
                                 </h6>
                             </div>
                             

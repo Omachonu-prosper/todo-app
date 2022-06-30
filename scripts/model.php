@@ -1,8 +1,14 @@
 <?php 
-
+	
+	// Fetch all Tasks in the database
 	function fetchTasks() {
 		$conn = mysqli_init();
-		mysqli_ssl_set($conn, NULL, NULL, getenv("MYSQL_ATTR_SSL_CA"), NULL, NULL);
+
+		// Use SSL to connect to planet Scale database if in production
+		if(getenv('ENVIRONMENT') == 'production') {
+			mysqli_ssl_set($conn, NULL, NULL, getenv("MYSQL_ATTR_SSL_CA"), NULL, NULL);
+		}
+
 		// Create connection to database 
 		mysqli_real_connect($conn, getenv("HOST"), getenv("USERNAME"), getenv("PASSWORD"), getenv("DATABASE"));
 
@@ -13,7 +19,7 @@
 		}
 
 		// Query database for data 
-		$sql_query = 'SELECT id, task_title, create_date FROM tasks;';
+		$sql_query = "SELECT id, task_title, create_date FROM tasks;";
 		$query_result = mysqli_query($conn, $sql_query);
 		// Format data to php's associative array
 		$result_array = mysqli_fetch_all($query_result, MYSQLI_ASSOC);
@@ -25,4 +31,5 @@
 
 		return $result_array;
 	}
+
 ?>

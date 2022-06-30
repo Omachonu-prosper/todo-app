@@ -45,6 +45,7 @@
                     <div class="no-task">
                         <!-- Image gotten from storyset.com  -->
                         <img src="./assets/images/add-tasks.png" alt="No tasks to show yet. Add a new task." title="No tasks to show yet. Add a new task.">
+                        <p>No tasks to show yet.</p>
                     </div>
                 <?php } ?>
 

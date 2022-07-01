@@ -38,6 +38,10 @@
 	function addTask($task_title, $authors_id) {
 		global $conn;
 
+		// Escape characters to prevent sql injection 
+		$task_title = mysqli_real_escape_string($conn, $task_title);
+		$authors_id = mysqli_real_escape_string($conn, $authors_id);
+
 		// Add new Task 
 		$sql_query = "INSERT INTO tasks (task_title, authors_id) VALUES ('$task_title', $authors_id);";
 		$query_result = mysqli_query($conn, $sql_query);

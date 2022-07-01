@@ -21,7 +21,7 @@
 		global $conn;
 
 		// Query database for data 
-		$sql_query = "SELECT id, task_title, create_date FROM tasks;";
+		$sql_query = "SELECT id, task_title, create_date FROM tasks ORDER BY create_date DESC;";
 		$query_result = mysqli_query($conn, $sql_query);
 		// Format data to php's associative array
 		$result_array = mysqli_fetch_all($query_result, MYSQLI_ASSOC);

@@ -25,7 +25,7 @@
                         <div class="form-row">
                             <div class="form-group mb-md-0 col-md-auto task-input">
                                 <label class="sr-only" for="task-title">Task title</label>
-                                <input type="text" class="form-control" id="task-title" name="task_title" placeholder="Task title" required>
+                                <input type="text" class="form-control" id="task-title" name="task_title" placeholder="Task title" required autocomplete="off">
                                 <div class="invalid-feedback">
                                     Input can not be empty.
                                 </div>
@@ -62,9 +62,11 @@
                             
                             <div class="row text-center pt-3">
                                 <div class="col">
-                                    <a href="#" class="card-link task-icon">
-                                        <i class="fa fa-trash trash"></i>
-                                    </a>
+                                    <form method="POST" action="./scripts/delete_task.php">
+                                        <button type="submit" name="delete_task" value="<?php echo htmlSpecialChars($task['id']);?>" class="task-icon">
+                                            <i class="fa fa-trash trash"></i>
+                                        </button>
+                                    </form>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="card-link task-icon">

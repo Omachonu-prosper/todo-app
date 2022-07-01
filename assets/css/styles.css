@@ -40,11 +40,16 @@ button.primary-background:focus {
     display: inline-block;
     position: relative;
     transition: .5s all ease-in-out;
+    border: none;
+    border-radius: 100%;
+    background-color: transparent;
 }
 
-.task-icon:hover {
+.task-icon:hover,
+.task-icon:focus {
     background-color: var(--light);
-    border-radius: 100%;
+    outline: none;
+    border:  none;
 }
 
 .task-icon i {

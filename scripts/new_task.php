@@ -1,5 +1,5 @@
 <?php 
-	
+	session_start();
 	require_once './model.php';
 	
 	if(isset($_POST['submit'])) {
@@ -10,16 +10,10 @@
 			$add_task = addTask($task_title, 1);
 
 			// Task was added successfully (addTask returned true)
-			if($add_task) {
-				echo 'Task added successfully';
-			} else {
+			if(!$add_task) {
 				echo 'FatalError: Task could not be added';
-				// Later on you would want to store the error in session and alert it to the user as a flash message
 			}
 
-		} else {
-			// Throw some error
-			// Store error in session and alert to user as flash message
 		}
 
 	}

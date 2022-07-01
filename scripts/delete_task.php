@@ -1,5 +1,5 @@
 <?php 
-	
+	session_start();
 	require_once './model.php';
 
 	// Page was accessed through delete button 
@@ -8,11 +8,8 @@
 		$delete_task = deleteTask($id);
 
 		// Task was added successfully (addTask returned true)
-		if($delete_task) {
-			echo 'Task added successfully';
-		} else {
+		if(!$delete_task) {
 			echo 'FatalError: Task could not be added';
-			// Later on you would want to store the error in session and alert it to the user as a flash message
 		}
 	}
 

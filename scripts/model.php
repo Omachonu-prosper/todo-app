@@ -37,7 +37,6 @@
 		// Add a new task to database
 	function addTask($task_title, $authors_id) {
 		global $conn;
-
 		// Escape characters to prevent sql injection 
 		$task_title = mysqli_real_escape_string($conn, $task_title);
 		$authors_id = mysqli_real_escape_string($conn, $authors_id);
@@ -54,6 +53,22 @@
 			return false;
 		}
 		
+	}
+
+	function deleteTask($id) {
+		global $conn;
+		$id = mysqli_real_escape_string($conn, $id);
+
+		$sql_query = "DELETE FROM tasks WHERE id = $id;";
+		$query_result = mysqli_query($conn, $sql_query);
+		mysqli_close($conn);
+
+		// Test if Task was deleted Successtully
+		if($query_result) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 ?>

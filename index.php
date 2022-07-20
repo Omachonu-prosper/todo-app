@@ -1,9 +1,5 @@
 <?php 
 
-    require_once './scripts/model.php';
-   
-    $tasks = fetchTasks();
-
     $user = [
         'id' => '1',
         'username' => 'John Doe',
@@ -11,6 +7,16 @@
         'password' => 'johndoe123',
         'join_date' => '01-06-2022'
     ]; 
+    // unset($user);
+
+    if (empty($user)) {
+        // Redirect user to Authentication page 
+        header('location: ./auth/login.php');
+    }
+
+    require_once './scripts/model.php';
+   
+    $tasks = fetchTasks();
 
 ?>
 
@@ -61,12 +67,15 @@
                             </div>
                             
                             <div class="row text-center pt-3">
+                                <!-- <form method="POST" action="./scripts/delete_task.php">
+                                    <button type="submit" name="delete_task" value="<?php echo htmlSpecialChars($task['id']);?>" class="task-icon">
+                                        <i class="fa fa-trash trash"></i>
+                                    </button>
+                                </form> -->
                                 <div class="col">
-                                    <form method="POST" action="./scripts/delete_task.php">
-                                        <button type="submit" name="delete_task" value="<?php echo htmlSpecialChars($task['id']);?>" class="task-icon">
-                                            <i class="fa fa-trash trash"></i>
-                                        </button>
-                                    </form>
+                                    <a href="#" data-id="<?php echo htmlSpecialChars($task['id']);?>" class="card-link task-icon" onclick="deleteButtonClick(this)">
+                                        <i class="fa fa-trash trash"></i>
+                                    </a>
                                 </div>
                                 <div class="col">
                                     <a href="#" class="card-link task-icon">

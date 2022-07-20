@@ -99,3 +99,7 @@ button.primary-background:focus {
 .no-task img {
     width:  20rem;
 }
+
+.auth-container {
+    max-width: 30rem !important;
+}

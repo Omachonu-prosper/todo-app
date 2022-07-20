@@ -19,7 +19,15 @@
 	                        <label class="sr-only" for="password">Password</label>
 	                        <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
 	                        <div class="invalid-feedback">
-	                            Password can not be empty.
+	                            Passwords must be more than 8 characters.
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group mb-md-0 mt-3">
+	                        <label class="sr-only" for="password">Confirm Password</label>
+	                        <input type="text" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
+	                        <div class="invalid-feedback">
+	                            Passwords Must match
 	                        </div>
 	                    </div>
 
@@ -32,7 +40,7 @@
 		</div>
 
 		<div class="text-center mt-5">
-			<p>Don't have an account? <a href="./signup.php">Signup</a>.</p>
+			<p>Already have an account? <a href="./login.php">login</a>.</p>
 		</div>
 	</div>
 

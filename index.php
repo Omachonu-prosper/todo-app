@@ -3,7 +3,6 @@
     $user = [
         'id' => '1',
         'username' => 'John Doe',
-        'email' => 'JohnDoe@todoapp.com',
         'password' => 'johndoe123',
         'join_date' => '01-06-2022'
     ]; 

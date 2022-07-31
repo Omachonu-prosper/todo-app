@@ -34,7 +34,7 @@
 		return $result_array;
 	}
 
-		// Add a new task to database
+	// Add a new task to database
 	function addTask($task_title, $authors_id) {
 		global $conn;
 		// Escape characters to prevent sql injection 
@@ -69,6 +69,56 @@
 		} else {
 			return false;
 		}
+	}
+
+	// Add a new user to database
+	function addUser($username, $password) {
+		global $conn;
+		// Escape characters to prevent sql injection 
+		$username = mysqli_real_escape_string($conn, $username);
+		$password = mysqli_real_escape_string($conn, $password);
+
+		// Add new User 
+		$sql_query = "INSERT INTO users (username, password) VALUES ('$username', '$password');";
+		$query_result = mysqli_query($conn, $sql_query);
+		mysqli_close($conn);
+
+		// Test if User was inserted Successtully
+		if($query_result) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
+	// Fetch all users
+	function checkUserLogin($username, $password) {
+		global $conn;
+
+		// Escape characters to prevent sql injection 
+		$username = mysqli_real_escape_string($conn, $username);
+		$password = mysqli_real_escape_string($conn, $password);
+
+		// Query database for data 
+		$sql_query = "SELECT * FROM users WHERE username = '$username' AND password = '$password';";
+		$query_result = mysqli_query($conn, $sql_query);
+		// Fetch returned row
+		$result_array = mysqli_fetch_row($query_result);
+		// Free result from memory
+		mysqli_free_result($query_result);
+
+		// Close connection to database
+		mysqli_close($conn);
+
+		if($result_array) {
+			// A user is found with the login details provided
+			return  $result_array;
+		}
+		else {
+			return false;
+		}
+
 	}
 
 ?>

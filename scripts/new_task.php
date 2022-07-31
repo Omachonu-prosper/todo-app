@@ -9,7 +9,7 @@
 		if(!empty($task_title)) {
 			$add_task = addTask($task_title, 1);
 
-			// Task was added successfully (addTask returned true)
+			// Task was not added successfully (addTask returned false)
 			if(!$add_task) {
 				echo 'FatalError: Task could not be added';
 			}

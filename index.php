@@ -10,8 +10,8 @@
         header('location: ./auth/login.php');
     }
 
-    $tasks = fetchTasks();
-    
+    $tasks = fetchTasks($user['id']);
+
 ?>
 
 <?php require_once './templates/header.php' ?>

@@ -17,11 +17,11 @@
 	}
 
 	// Fetch all Tasks in the database
-	function fetchTasks() {
+	function fetchTasks($user_id) {
 		global $conn;
 
 		// Query database for data 
-		$sql_query = "SELECT id, task_title, create_date FROM tasks ORDER BY create_date DESC;";
+		$sql_query = "SELECT id, task_title, create_date FROM tasks WHERE authors_id = $user_id ORDER BY create_date DESC;";
 		$query_result = mysqli_query($conn, $sql_query);
 		// Format data to php's associative array
 		$result_array = mysqli_fetch_all($query_result, MYSQLI_ASSOC);

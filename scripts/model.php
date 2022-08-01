@@ -81,12 +81,13 @@
 		// Add new User 
 		$sql_query = "INSERT INTO users (username, password) VALUES ('$username', '$password');";
 		$query_result = mysqli_query($conn, $sql_query);
-		mysqli_close($conn);
 
 		// Test if User was inserted Successtully
 		if($query_result) {
-			return true;
+			return checkUserLogin($username, $password);
 		} else {
+			mysqli_close($conn);
+
 			return false;
 		}
 		

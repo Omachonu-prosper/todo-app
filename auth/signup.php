@@ -1,4 +1,6 @@
 <?php 
+	session_start();
+
 	require_once '../scripts/new_user.php';
 
 	$errors = ['username' => '', 'password' => ''];
@@ -11,6 +13,7 @@
 		if(strlen($username) < 2) {
 			$errors['username'] = 'Username must contain two or more characters';
 		}
+
 		// Validate password
 		if(strlen($password) < 8) {
 			$errors['password'] = 'Password must contain eight or more characters';
@@ -19,7 +22,15 @@
 		// No errors in the form / all is valid 
 		if(empty($errors['username']) && empty($errors['password'])) {
 			// Add user to database 
-			newUser($username, $password);
+			$user = newUser($username, $password);
+
+			$user = [
+				'id' => $user['id'],
+				'username' => $user['username'],
+				'join_date' => $user['join_date']
+			];
+			
+			$_SESSION['user'] = $user;
 
 			header('location: ../');
 		}
@@ -61,7 +72,7 @@
 	                    </div>
 
 	                    <div class="submit-task mt-3">
-	                        <button type="submit" name="submit" class="btn primary-background">Login</button>
+	                        <button type="submit" name="submit" class="btn primary-background">Signup</button>
 	                    </div>
 	                </div>
 	            </form>

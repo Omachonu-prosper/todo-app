@@ -3,7 +3,6 @@ function confirmPassword() {
   if(window.location.pathname === '/todo-app/auth/signup.php') {
     let password = document.querySelector('#password');
     let confirmationPassword = document.querySelector('#confirm-password');
-    let passwordFeedback = document.querySelector('#password-feedback');
 
     // Password Mismatch
     if(password.value != confirmationPassword.value) {

@@ -11,7 +11,7 @@
     }
 
     $tasks = fetchTasks();
-
+    
 ?>
 
 <?php require_once './templates/header.php' ?>

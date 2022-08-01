@@ -1,5 +1,6 @@
 <?php 
-	
+	session_start();
+
 	require_once '../scripts/model.php';
 
 	$error = false;
@@ -7,10 +8,19 @@
 	if(isset($_POST['submit'])) {
 		$username  = $_POST['username'];
 		$password = $_POST['password'];
+		$user = checkUserLogin($username, $password);
 
-		// Credentials check 
-		if(checkUserLogin($username, $password)) {
-			// Login was successful
+		// A user was found with the credentials provided
+		if($user) {
+			// Store user in session (log user in)
+			$user = [
+				'id' => $user['id'],
+				'username' => $user['username'],
+				'join_date' => $user['join_date']
+			];
+			
+			$_SESSION['user'] = $user;
+
 			header('location: ../');
 		}
 		else {
@@ -31,7 +41,7 @@
 			 	<!-- The login was unsuccessful because of credential issues  -->
 			 	<?php if(!empty($error)) { ?>
 			 		<div class="alert alert-danger" role="alert">
-					 	Username or Password incorrect
+					 	Username or Password is incorrect
 					</div>
 			 	<?php } ?>
 

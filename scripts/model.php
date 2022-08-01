@@ -104,7 +104,7 @@
 		$sql_query = "SELECT * FROM users WHERE username = '$username' AND password = '$password';";
 		$query_result = mysqli_query($conn, $sql_query);
 		// Fetch returned row
-		$result_array = mysqli_fetch_row($query_result);
+		$result_array = mysqli_fetch_array($query_result, MYSQLI_ASSOC);
 		// Free result from memory
 		mysqli_free_result($query_result);
 

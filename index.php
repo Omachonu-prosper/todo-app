@@ -1,20 +1,15 @@
 <?php 
+    session_start();
 
-    $user = [
-        'id' => '1',
-        'username' => 'John Doe',
-        'password' => 'johndoe123',
-        'join_date' => '01-06-2022'
-    ]; 
-    // unset($user);
+    require_once './scripts/model.php';
+
+    $user = $_SESSION['user'];
 
     if (empty($user)) {
-        // Redirect user to Authentication page 
+        // Redirect user to Authentication page if not logged in
         header('location: ./auth/login.php');
     }
 
-    require_once './scripts/model.php';
-   
     $tasks = fetchTasks();
 
 ?>

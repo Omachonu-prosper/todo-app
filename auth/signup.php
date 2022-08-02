@@ -65,7 +65,7 @@
 
 	                    <div class="form-group mb-md-0 mt-3">
 	                        <label class="sr-only" for="password">Confirm Password</label>
-	                        <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password" minlength="8" required>
+	                        <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
 	                        <div class="invalid-feedback">
 	                            Passwords must match
 	                        </div>

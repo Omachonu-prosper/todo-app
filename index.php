@@ -67,7 +67,7 @@
                                     </button>
                                 </form> -->
                                 <div class="col">
-                                    <a href="#" data-id="<?php echo htmlSpecialChars($task['id']);?>" class="card-link task-icon" onclick="deleteButtonClick(this)">
+                                    <a href="#" data-id="<?php echo htmlSpecialChars($task['id']);?>" class="card-link task-icon" onclick="deleteTask(this)">
                                         <i class="fa fa-trash trash"></i>
                                     </a>
                                 </div>

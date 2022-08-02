@@ -1,17 +1,16 @@
 // Confirm if the password matches the confirm password
 function confirmPassword() {
-  if(window.location.pathname === '/todo-app/auth/signup.php') {
+  // There is a signup form on the page
+  if(document.forms.signup) {
     let password = document.querySelector('#password');
     let confirmationPassword = document.querySelector('#confirm-password');
 
-    // Password Mismatch
-    if(password.value != confirmationPassword.value) {
-      confirmationPassword.setCustomValidity('invalid');
-      password.setCustomValidity('invalid');
+    // Password Match or Mismatch
+    if(password.value === confirmationPassword.value) {
+      confirmationPassword.setCustomValidity('');
     } 
     else {
-      confirmationPassword.setCustomValidity('');
-      password.setCustomValidity('');
+      confirmationPassword.setCustomValidity('invalid');
     }
   } 
   else {

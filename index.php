@@ -11,7 +11,7 @@
     }
 
     $tasks = fetchTasks($user['id']);
-
+    
 ?>
 
 <?php require_once './templates/header.php' ?>

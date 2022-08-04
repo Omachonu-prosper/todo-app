@@ -55,11 +55,12 @@
 		
 	}
 
-	function deleteTask($id) {
+	function deleteTask($id, $user_id) {
 		global $conn;
 		$id = mysqli_real_escape_string($conn, $id);
+		$user_id = mysqli_real_escape_string($conn, $user_id);
 
-		$sql_query = "DELETE FROM tasks WHERE id = $id;";
+		$sql_query = "DELETE FROM tasks WHERE id = $id AND authors_id = $user_id;";
 		$query_result = mysqli_query($conn, $sql_query);
 		mysqli_close($conn);
 

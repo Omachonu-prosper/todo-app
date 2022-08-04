@@ -76,6 +76,7 @@ function deleteTask(element, event) {
         res.json()
       })
       .then(data => { 
+        console.log(data);
         window.location.reload();
       })
       .catch(error => { 

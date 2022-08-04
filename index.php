@@ -18,6 +18,18 @@
 <?php require_once './templates/navbar.php' ?>
 
     <main>
+        <div id="confirm-delete" class="hidden">
+            <div class="card" style="max-width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">This action can not be undone</h5>
+                    <p class="card-text">You are about to delete a task</p>
+                    
+                    <a href="#" class="card-link" id="delete">Delete</a>
+                    <a href="#" class="card-link" id="cancel">Cancel</a>
+                </div>
+            </div>
+        </div>
+
         <div class="container mx-auto mt-5 pl-3 pr-3">
             <div class="form-box card mb-5">
                 <div class="card-body">
@@ -61,13 +73,8 @@
                             </div>
                             
                             <div class="row text-center pt-3">
-                                <!-- <form method="POST" action="./scripts/delete_task.php">
-                                    <button type="submit" name="delete_task" value="<?php echo htmlSpecialChars($task['id']);?>" class="task-icon">
-                                        <i class="fa fa-trash trash"></i>
-                                    </button>
-                                </form> -->
                                 <div class="col">
-                                    <a href="#" data-id="<?php echo htmlSpecialChars($task['id']);?>" class="card-link task-icon" onclick="deleteTask(this)">
+                                    <a href="#" data-id="<?php echo htmlSpecialChars($task['id']);?>" class="card-link task-icon" onclick="deleteTask(this, event)">
                                         <i class="fa fa-trash trash"></i>
                                     </a>
                                 </div>

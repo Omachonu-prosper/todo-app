@@ -104,7 +104,7 @@ button.primary-background:focus {
     max-width: 30rem !important;
 }
 
-#confirm-delete.shown {
+.confirm-dialogue.shown {
     display: block;
     position: fixed;
     top: 0;
@@ -114,14 +114,15 @@ button.primary-background:focus {
     backdrop-filter: brightness(0.5);
 }
 
-#confirm-delete.hidden {
+.confirm-dialogue.hidden {
     display: none;
     opacity: 1;
 }
 
-#confirm-delete .card {
+.confirm-dialogue .card {
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
+    user-select: none;
 }

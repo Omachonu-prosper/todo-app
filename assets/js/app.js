@@ -91,3 +91,36 @@ function deleteTask(element, event) {
 
   return
 }
+
+function editTask(element, event) {
+  event.preventDefault();
+  let editDialogue = document.querySelector('#edit-dialogue');
+  let editTaskInput = document.querySelector('#edit-task-title');
+  let previousTaskTitle = element.parentElement.parentElement.previousElementSibling.firstElementChild.innerText
+  let editTaskIdInput = document.querySelector('#edit-task-id');
+
+  // Show the confirmation box
+  editDialogue.classList.add('shown');
+  editDialogue.classList.remove('hidden');
+
+  // Fill the input field with the tasks title
+  editTaskInput.value = previousTaskTitle;
+  // Set the id of the task to be updated
+  editTaskIdInput.value = element.dataset.id;
+
+  // Listen for a click outside the box to close it
+  editDialogue.addEventListener('click', (e) => {
+    if(e.target.id === 'edit-dialogue') {
+      // Close the box
+      editDialogue.classList.remove('shown');
+      editDialogue.classList.add('hidden');
+    } 
+    else if (e.target.id === 'cancel') {
+      // Close the box
+      editDialogue.classList.remove('shown');
+      editDialogue.classList.add('hidden');
+    }
+  })
+
+  return
+}

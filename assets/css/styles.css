@@ -103,3 +103,26 @@ button.primary-background:focus {
 .auth-container {
     max-width: 30rem !important;
 }
+
+.confirm-dialogue.shown {
+    display: block;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: brightness(0.5);
+}
+
+.confirm-dialogue.hidden {
+    display: none;
+    opacity: 1;
+}
+
+.confirm-dialogue .card {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+}

@@ -1,17 +1,16 @@
 // Confirm if the password matches the confirm password
 function confirmPassword() {
-  if(window.location.pathname === '/todo-app/auth/signup.php') {
+  // There is a signup form on the page
+  if(document.forms.signup) {
     let password = document.querySelector('#password');
     let confirmationPassword = document.querySelector('#confirm-password');
 
-    // Password Mismatch
-    if(password.value != confirmationPassword.value) {
-      confirmationPassword.setCustomValidity('invalid');
-      password.setCustomValidity('invalid');
+    // Password Match or Mismatch
+    if(password.value === confirmationPassword.value) {
+      confirmationPassword.setCustomValidity('');
     } 
     else {
-      confirmationPassword.setCustomValidity('');
-      password.setCustomValidity('');
+      confirmationPassword.setCustomValidity('invalid');
     }
   } 
   else {
@@ -42,3 +41,86 @@ function confirmPassword() {
     });
   }, false);
 })();
+
+function deleteTask(element, event) {
+  event.preventDefault();
+  let confirmDelete = document.querySelector('#confirm-delete');
+
+  // Show the confirmation box
+  confirmDelete.classList.add('shown');
+  confirmDelete.classList.remove('hidden');
+
+  // Listen for a click outside the box to close it
+  confirmDelete.addEventListener('click', (e) => {
+    if(e.target.id === 'confirm-delete') {
+      // Close the box
+      confirmDelete.classList.remove('shown');
+      confirmDelete.classList.add('hidden');
+    } 
+    else if(e.target.id === 'delete') {
+      let id = element.dataset.id;
+      const data = {
+        deleteTask: true,
+        id
+      }
+
+      // Send request to delete task
+      fetch('http://localhost/todo-app/scripts/delete_task.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => { 
+        res.json()
+      })
+      .then(data => { 
+        console.log(data);
+        window.location.reload();
+      })
+      .catch(error => { 
+        console.log(error) 
+      })
+    } else if (e.target.id === 'cancel') {
+      // Close the box
+      confirmDelete.classList.remove('shown');
+      confirmDelete.classList.add('hidden');
+    }
+  })
+
+  return
+}
+
+function editTask(element, event) {
+  event.preventDefault();
+  let editDialogue = document.querySelector('#edit-dialogue');
+  let editTaskInput = document.querySelector('#edit-task-title');
+  let previousTaskTitle = element.parentElement.parentElement.previousElementSibling.firstElementChild.innerText
+  let editTaskIdInput = document.querySelector('#edit-task-id');
+
+  // Show the confirmation box
+  editDialogue.classList.add('shown');
+  editDialogue.classList.remove('hidden');
+
+  // Fill the input field with the tasks title
+  editTaskInput.value = previousTaskTitle;
+  // Set the id of the task to be updated
+  editTaskIdInput.value = element.dataset.id;
+
+  // Listen for a click outside the box to close it
+  editDialogue.addEventListener('click', (e) => {
+    if(e.target.id === 'edit-dialogue') {
+      // Close the box
+      editDialogue.classList.remove('shown');
+      editDialogue.classList.add('hidden');
+    } 
+    else if (e.target.id === 'cancel') {
+      // Close the box
+      editDialogue.classList.remove('shown');
+      editDialogue.classList.add('hidden');
+    }
+  })
+
+  return
+}

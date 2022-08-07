@@ -4,3 +4,4 @@ setEnv PASSWORD ''
 setEnv DATABASE ''
 setEnv MYSQL_ATTR_SSL_CA ''
 setEnv ENVIRONMENT ''
+setEnv ROOT_PATH

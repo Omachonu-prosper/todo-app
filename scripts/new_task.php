@@ -2,7 +2,7 @@
 	session_start();
 	require_once './model.php';
 	
-	if(isset($_POST['submit'])) {
+	if(isset($_POST['new_task_submit'])) {
 		$task_title = $_POST['task_title'];
 		$user = $_SESSION['user'];
 

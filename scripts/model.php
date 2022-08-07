@@ -55,11 +55,34 @@
 		
 	}
 
-	function deleteTask($id) {
+	// Edit a new task to database
+	function editTask($task_title, $task_id, $authors_id) {
+		global $conn;
+		// Escape characters to prevent sql injection 
+		$task_title = mysqli_real_escape_string($conn, $task_title);
+		$task_id = mysqli_real_escape_string($conn, $task_id);
+		$authors_id = mysqli_real_escape_string($conn, $authors_id);
+
+		// Edit new Task 
+		$sql_query = "UPDATE tasks SET task_title = '$task_title' WHERE id = $task_id AND authors_id = authors_id";
+		$query_result = mysqli_query($conn, $sql_query);
+		mysqli_close($conn);
+
+		// Test if Task was inserted Successtully
+		if($query_result) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+
+	function deleteTask($id, $user_id) {
 		global $conn;
 		$id = mysqli_real_escape_string($conn, $id);
+		$user_id = mysqli_real_escape_string($conn, $user_id);
 
-		$sql_query = "DELETE FROM tasks WHERE id = $id;";
+		$sql_query = "DELETE FROM tasks WHERE id = $id AND authors_id = $user_id;";
 		$query_result = mysqli_query($conn, $sql_query);
 		mysqli_close($conn);
 

@@ -65,7 +65,7 @@ function deleteTask(element, event) {
       }
 
       // Send request to delete task
-      fetch('http://localhost/todo-app/scripts/delete_task.php', {
+      fetch('https://omaprostodo.herokuapp.com/scripts/delete_task.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

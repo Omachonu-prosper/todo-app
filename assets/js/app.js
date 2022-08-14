@@ -1,4 +1,4 @@
-const HOST = 'http://localhost/todo-app';
+const HOST = 'http://omaprostodo.herokuapp.com';
 
 // Confirm if the password matches the confirm password
 function confirmPassword() {

@@ -1,3 +1,5 @@
+const HOST = 'http://localhost/todo-app';
+
 // Confirm if the password matches the confirm password
 function confirmPassword() {
   // There is a signup form on the page
@@ -65,7 +67,7 @@ function deleteTask(element, event) {
       }
 
       // Send request to delete task
-      fetch('http://localhost/todo-app/scripts/delete_task.php', {
+      fetch(HOST + '/scripts/delete_task.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

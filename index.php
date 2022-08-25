@@ -24,8 +24,14 @@
                     <h5 class="card-title text-danger">This action can not be undone</h5>
                     <p class="card-text">You are about to delete a task</p>
                     
-                    <a href="#" class="card-link" id="delete">Delete</a>
-                    <a href="#" class="card-link" id="cancel">Cancel</a>
+                    <form action="./scripts/delete_task.php" method="post" class="needs-validation" novalidate>
+                        <div class="mt-3">
+                            <input type="number" name="id" id="delete-task-id" class="d-none">
+                            <button type="submit" name="delete_task_submit" class="btn primary-background mr-3">Delete Task</button>
+
+                            <a href="#" class="card-link" id="cancel">Cancel</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -106,11 +112,11 @@
                                         <i class="fa fa-pencil pencil"></i>
                                     </a>
                                 </div>
-                                <div class="col">
+                                <!-- <div class="col">
                                     <a href="#" class="card-link task-icon">
                                         <i class="fa fa-check-square-o check"></i>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

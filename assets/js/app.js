@@ -45,8 +45,9 @@ function confirmPassword() {
 })();
 
 function deleteTask(element, event) {
-  event.preventDefault();
   let confirmDelete = document.querySelector('#confirm-delete');
+  let deleteTaskId = document.querySelector('#delete-task-id');
+  deleteTaskId.value = element.dataset.id;
 
   // Show the confirmation box
   confirmDelete.classList.add('shown');
@@ -57,33 +58,7 @@ function deleteTask(element, event) {
     if(e.target.id === 'confirm-delete') {
       // Close the box
       confirmDelete.classList.remove('shown');
-      confirmDelete.classList.add('hidden');
-    } 
-    else if(e.target.id === 'delete') {
-      let id = element.dataset.id;
-      const data = {
-        deleteTask: true,
-        id
-      }
-
-      // Send request to delete task
-      fetch(HOST + '/scripts/delete_task.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      })
-      .then(res => { 
-        res.json()
-      })
-      .then(data => { 
-        console.log(data);
-        window.location.reload();
-      })
-      .catch(error => { 
-        console.log(error) 
-      })
+      confirmDelete.classList.add('hidden');      
     } else if (e.target.id === 'cancel') {
       // Close the box
       confirmDelete.classList.remove('shown');

@@ -16,9 +16,6 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="<?php echo getenv('ROOT_PATH') . 'auth/logout.php' ?>">Logout</a>
-                    <a class="dropdown-item disabled" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item disabled" href="#">Something else here</a>
                 </div>
             </li>
         </ul>

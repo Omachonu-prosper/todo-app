@@ -112,11 +112,11 @@
                                         <i class="fa fa-pencil pencil"></i>
                                     </a>
                                 </div>
-                                <div class="col">
+                                <!-- <div class="col">
                                     <a href="#" class="card-link task-icon">
                                         <i class="fa fa-check-square-o check"></i>
                                     </a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
